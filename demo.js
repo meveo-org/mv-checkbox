@@ -15,24 +15,53 @@ export class MvCheckboxDemo extends LitElement {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 10pt);
       }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;        
+        width: 100%;
+      }
+
+      .value {
+        padding: 3px 10px;
+        margin-left: 20px;
+        font-size: 16px;
+        color: #DF013A;
+        background-color: #F8E0E0;
+        line-height: 18px;
+      }
+
+      .value.checked{
+        color: #088A29;
+        background-color: #CEF6CE;
+      }
     `;
   }
 
   render() {
     return html`
-    <mv-checkbox
-      .value="Test value"
-      .checked="${!!this.checked}"
-      @click-checkbox="${this.handleClickCheckbox}"
-      label="${this["checkbox-column-label"]}"
-    > </mv-checkbox>
-    <pre>value: ${value}</pre>
+    <div class="container">
+      <mv-checkbox
+        .value="${{ isChecked: !this.checked }}"
+        .checked="${!!this.checked}"
+        @click-checkbox="${this.handleClickCheckbox}"
+        label="Checked?"
+      > </mv-checkbox>
+      <div class="value${this.checked ? " checked" : ""}">${this.value}</div>
+    </div>
     `;
+  }
+
+  constructor() {
+    super();
+    this.value = "NO";
+    this.checked = false;
   }
 
   handleClickCheckbox(event) {
     const { detail: { value, checked } } = event;
-    this.value = value;
+    this.value = value.isChecked ? "YES" : "NO";
     this.checked = checked;
   }
 }
