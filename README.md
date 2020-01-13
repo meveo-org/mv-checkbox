@@ -28,4 +28,4 @@ To experiment with the MvCheckbox component.
 ></mv-checkbox>
 ```
 
-You can also check this [demo](https://manaty.net/mv-checkbox/)
+You can also check this [demo](https://checkbox.meveo.org/)
