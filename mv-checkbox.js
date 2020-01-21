@@ -14,11 +14,12 @@ export class MvCheckbox extends LitElement {
 
   static get styles() {
     return css`
-			label {
+	  label {
         font-family: var(--mv-font-family, Arial);
         font-size: var(--mv-font-size, 16px);
         display: flex;
         align-items: center;
+        --border-color: var(--mv-checkbox-border-color, #4E686D);
       }
 
       span {        
@@ -61,7 +62,7 @@ export class MvCheckbox extends LitElement {
       }
 
       input[type="checkbox"] + span.light::before {
-        border: 1px solid #4E686D;
+        border: 1px solid var(--border-color);
       }
 
       label:hover input[type="checkbox"] + span.light::before {
