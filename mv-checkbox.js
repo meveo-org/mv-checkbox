@@ -116,6 +116,14 @@ export class MvCheckbox extends LitElement {
         color: #C7C7C7;
         cursor: default;
       }
+      
+      span.light {
+        color: #80828C;
+      }
+      
+      span.dark {
+        color: #FFFFFF;
+      }
 		`;
   }
 
