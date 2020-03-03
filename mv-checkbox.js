@@ -130,7 +130,7 @@ export class MvCheckbox extends LitElement {
       span.dark {
         color: var(--label-dark-color);
       }
-		`;
+    `;
   }
 
   constructor() {
