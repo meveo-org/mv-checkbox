@@ -76,20 +76,21 @@ export class MvCheckboxDemo extends LitElement {
   }
 
   render() {
+    const { theme } = this;
     return html`
       <fieldset>
         <legend>Theme</legend>
-        <label><input type="radio" name="theme" value="light" checked @change="${this.radioChange}" />Light</label>
-        <label><input type="radio" name="theme" value="dark" @change="${this.radioChange}" />Dark</label>
+        <label><input type="radio" name="theme" value="light" checked @change="${this.changeTheme}" />Light</label>
+        <label><input type="radio" name="theme" value="dark" @change="${this.changeTheme}" />Dark</label>
       </fieldset>
-      <mv-container .theme="${this.theme}">
+      <mv-container .theme="${theme}">
         <div>
           <mv-checkbox
             .value="${{ isChecked: !this.checked }}"
             .checked="${!!this.checked}"
             @click-checkbox="${this.handleClickCheckbox}"
             label="Checked?"
-            .theme="${this.theme}"
+            .theme="${theme}"
           > </mv-checkbox>
           <div class="value${this.checked ? " checked" : ""}">${this.value}</div>
         </div>
@@ -103,13 +104,9 @@ export class MvCheckboxDemo extends LitElement {
     this.checked = checked;
   }
 
-  radioChange = originalEvent => {
+  changeTheme = originalEvent => {
     const { target: { value } } = originalEvent;
-    if (value === "light") {
-      this.theme = "light";
-    } else {
-      this.theme = "dark";
-    }
+    this.theme = value;
   };
 }
 
