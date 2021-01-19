@@ -8,36 +8,43 @@ export class MvCheckbox extends LitElement {
       disabled: { type: Boolean, attribute: true },
       label: { type: String, attribute: true },
       // theme is either "light" or "dark", default: "light"
-      theme: { type: String, attribute: true }
+      theme: { type: String, attribute: true },
     };
   }
 
   static get styles() {
     return css`
-	  label {
+      label {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 16px);
         display: flex;
         align-items: center;
-        --border-color: var(--mv-checkbox-border-color, #4E686D);
-        --border-dark-color: var(--mv-checkbox-border-dark-color, #FFFFFF);
+        --border-color: var(--mv-checkbox-border-color, #4e686d);
+        --border-dark-color: var(--mv-checkbox-border-dark-color, #ffffff);
         --label-color: var(--mv-checkbox-label-color, #818181);
-        --label-dark-color: var(--mv-checkbox-label-dark-color, #FFFFFF);
-        --checked-background: var(--mv-checkbox-checked-background, #0792C5);
-        --checked-dark-background: var(--mv-checkbox-checked-dark-background, #FFFFFF);
-        --hover-border-color: var(--mv-checkbox-hover-border-color, #1D9BC9);
-        --hover-border-dark-color: var(--mv-checkbox-hover-border-dark-color, #FFFFFF);
+        --label-dark-color: var(--mv-checkbox-label-dark-color, #ffffff);
+        --checked-background: var(--mv-checkbox-checked-background, #0792c5);
+        --checked-dark-background: var(
+          --mv-checkbox-checked-dark-background,
+          #ffffff
+        );
+        --hover-border-color: var(--mv-checkbox-hover-border-color, #1d9bc9);
+        --hover-border-dark-color: var(
+          --mv-checkbox-hover-border-dark-color,
+          #ffffff
+        );
       }
 
-      span {        
+      span {
         display: flex;
         align-items: center;
       }
 
       span::before {
-        display: inline-block;    
+        display: inline-block;
       }
 
+      label,
       label * {
         cursor: pointer;
       }
@@ -73,25 +80,25 @@ export class MvCheckbox extends LitElement {
 
       label:hover input[type="checkbox"] + span.light::before {
         border: 1px solid var(--hover-border-color);
-        box-shadow: inset 0 0 5 0 rgba(29,155,201,0.3);
+        box-shadow: inset 0 0 5 0 rgba(29, 155, 201, 0.3);
       }
 
       input[type="checkbox"]:checked + span.light::before {
         border: 1px solid var(--checked-background);
         background-color: var(--checked-background);
-        color: #FFFFFF;
+        color: #ffffff;
       }
 
       label:hover input[type="checkbox"]:disabled + span.light,
       input[type="checkbox"]:disabled + span.light {
-        color: #C7C7C7;
+        color: #c7c7c7;
         cursor: default;
       }
 
       label:hover input[type="checkbox"]:disabled + span.light::before,
       input[type="checkbox"]:disabled + span.light::before {
-        border: 1px solid #A8B5B7;
-        color: #C7C7C7;
+        border: 1px solid #a8b5b7;
+        color: #c7c7c7;
         cursor: default;
       }
 
@@ -101,32 +108,32 @@ export class MvCheckbox extends LitElement {
 
       label:hover input[type="checkbox"] + span.dark::before {
         border: 1px solid var(--hover-border-dark-color);
-        background-color: #656C75;
+        background-color: #656c75;
       }
 
       input[type="checkbox"]:checked + span.dark::before {
         border: 1px solid var(--checked-dark-background);
         background-color: var(--checked-dark-background);
-        color: #3F4753;
+        color: #3f4753;
       }
 
       label:hover input[type="checkbox"]:disabled + span.dark,
       input[type="checkbox"]:disabled + span.dark {
-        color: #C7C7C7;
+        color: #c7c7c7;
         cursor: default;
       }
 
       label:hover input[type="checkbox"]:disabled + span.dark::before,
       input[type="checkbox"]:disabled + span.dark::before {
-        border: 1px solid #A8B5B7;
-        color: #C7C7C7;
+        border: 1px solid #a8b5b7;
+        color: #c7c7c7;
         cursor: default;
       }
-      
+
       span.light {
         color: var(--label-color);
       }
-      
+
       span.dark {
         color: var(--label-dark-color);
       }
@@ -142,25 +149,23 @@ export class MvCheckbox extends LitElement {
   }
 
   render() {
-    const { checked, label, handleClick } = this;
+    const { checked, disabled, label, handleClick } = this;
     return html`
-    <label>
-      ${checked
-        ? html`
-            <input
+      <label>
+        ${checked
+          ? html`<input
               type="checkbox"
               @click="${handleClick}"
-              ?disabled="${this.disabled}"
-              checked="checked"
+              ?disabled="${disabled}"
+              checked
             />`
-        : html`
-            <input
+          : html`<input
               type="checkbox"
               @click="${handleClick}"
-              ?disabled="${this.disabled}"
+              ?disabled="${disabled}"
             />`}
-      <span class="${this.theme}">${label}</span>
-    </label>
+        <span class="${this.theme}">${label}</span>
+      </label>
     `;
   }
 
@@ -169,7 +174,7 @@ export class MvCheckbox extends LitElement {
     const { value, checked } = this;
     this.dispatchEvent(
       new CustomEvent("click-checkbox", {
-        detail: { value, checked: !checked, originalEvent }
+        detail: { value, checked: !checked, originalEvent },
       })
     );
   }
