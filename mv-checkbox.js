@@ -19,6 +19,7 @@ export class MvCheckbox extends LitElement {
         font-size: var(--font-size-m, 16px);
         display: flex;
         align-items: center;
+        width: var(--mv-checkbox-label-width, auto);
         --border-color: var(--mv-checkbox-border-color, #4e686d);
         --border-dark-color: var(--mv-checkbox-border-dark-color, #ffffff);
         --label-color: var(--mv-checkbox-label-color, #818181);
