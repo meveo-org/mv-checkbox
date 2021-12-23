@@ -1,0 +1,22 @@
+{
+  "name": "@meveo-org/mv-checkbox",
+  "version": "1.0.0",
+  "description": "MvCheckbox is a Meveo checkbox component (based on lit-element) that renders a checkbox input.",
+  "main": "mv-checkbox.js",
+  "scripts": {
+    "serve": "es-dev-server --node-resolve --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meveo-org/mv-checkbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meveo-org/mv-checkbox/issues"
+  },
+  "homepage": "https://github.com/meveo-org/mv-checkbox#readme",
+  "devDependencies": {
+    "es-dev-server": "^1.46.1"
+  }
+}
