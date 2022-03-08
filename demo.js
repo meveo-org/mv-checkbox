@@ -1,6 +1,6 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import "./mv-checkbox.js";
-import "mv-container";
+import "@meveo-org/mv-container";
 
 export class MvCheckboxDemo extends LitElement {
   static get properties() {
