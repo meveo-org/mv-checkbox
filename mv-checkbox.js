@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from "lit-element";
 
 export class MvCheckbox extends LitElement {
   static get properties() {
@@ -75,29 +75,43 @@ export class MvCheckbox extends LitElement {
         content: "\u2713";
       }
 
-      input[type="checkbox"] + span.light::before {
+      .lightV2 {
+        --background-color: #ffffff;
+        --border-radius: 50%;
+      }
+
+      input[type="checkbox"] + span.light::before,
+      input[type="checkbox"] + span.lightV2::before {
         border: 1px solid var(--border-color);
+        background-color: var(--background-color);
+        border-radius: var(--border-radius);
       }
 
-      label:hover input[type="checkbox"] + span.light::before {
+      label:hover input[type="checkbox"] + span.light::before,
+      label:hover input[type="checkbox"] + span.lightV2::before {
         border: 1px solid var(--hover-border-color);
-        box-shadow: inset 0 0 5 0 rgba(29, 155, 201, 0.3);
+        box-shadow: inset 0 0 5 0 rgba(29,155,201,0.3);
       }
 
-      input[type="checkbox"]:checked + span.light::before {
+      input[type="checkbox"]:checked + span.light::before,
+      input[type="checkbox"]:checked + span.lightV2::before {
         border: 1px solid var(--checked-background);
         background-color: var(--checked-background);
         color: #ffffff;
       }
 
       label:hover input[type="checkbox"]:disabled + span.light,
-      input[type="checkbox"]:disabled + span.light {
+      input[type="checkbox"]:disabled + span.light,
+      label:hover input[type="checkbox"]:disabled + span.lightV2,
+      input[type="checkbox"]:disabled + span.lightV2 {
         color: #c7c7c7;
         cursor: default;
       }
 
       label:hover input[type="checkbox"]:disabled + span.light::before,
-      input[type="checkbox"]:disabled + span.light::before {
+      input[type="checkbox"]:disabled + span.light::before,
+      label:hover input[type="checkbox"]:disabled + span.lightV2::before,
+      input[type="checkbox"]:disabled + span.lightV2::before {
         border: 1px solid #a8b5b7;
         color: #c7c7c7;
         cursor: default;
@@ -152,7 +166,7 @@ export class MvCheckbox extends LitElement {
   render() {
     const { checked, disabled, label, handleClick } = this;
     return html`
-      <label>
+      <label class="${this.theme}">
         ${checked
           ? html`<input
               type="checkbox"
