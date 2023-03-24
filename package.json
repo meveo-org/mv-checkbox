@@ -1,6 +1,6 @@
 {
   "name": "@meveo-org/mv-checkbox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MvCheckbox is a Meveo checkbox component (based on lit-element) that renders a checkbox input.",
   "main": "mv-checkbox.js",
   "scripts": {
