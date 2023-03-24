@@ -110,6 +110,7 @@ export class MvCheckbox extends LitElement {
         box-shadow: var(--checkbox-box-shadow, none);
       }
 
+
       label:hover input[type="checkbox"] + span.light::before {
         border: 1px solid var(--hover-border-color);
         box-shadow: var(--checkbox-box-shadow-hover, inset 0 0 5 0 rgba(29, 155, 201, 0.3))
@@ -119,6 +120,14 @@ export class MvCheckbox extends LitElement {
         border: var(--checkbox-checked-border, 1px solid var(--checked-background));
         background-color: var(--checkbox-checked-background, var(--checked-background));
         color: var(--checkbox-checked-color, #FFFFFF);
+      }
+
+      input[type="checkbox"]:hover + span.light::before {
+        color: #E1E1E1;
+        content: "\u2713";
+        border: var(--checkbox-border);
+        background-color: var(--checkbox-background);
+        box-shadow: var(--checkbox-box-shadow, none);
       }
 
       label:hover input[type="checkbox"]:disabled + span.light,
